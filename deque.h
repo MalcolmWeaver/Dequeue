@@ -263,7 +263,7 @@ namespace coen79_lab8
 			value_type * new_item_ptr = block_pointers[bp_array_index]+block_item_index;
 			if(src_item_ptr == src.front_ptr){front_ptr = new_item_ptr;}
 			if(src_item_ptr == src.back_ptr){back_ptr = new_item_ptr;}
-			*new_item_ptr = src_item_ptr;
+			*new_item_ptr = *src_item_ptr;
                 }
             }
         }
@@ -276,11 +276,13 @@ namespace coen79_lab8
         
         // Clear the data blocks
         // STUDENT WORK...
-        
+        clear();
+	
         
         // Clear the array of block pointers
         // STUDENT WORK...
-        
+	delete [] block_pointers;
+	// do I need to worry about first_bp, front_ptr, etc.        
         
         first_bp = last_bp = block_pointers_end = block_pointers = NULL;
         front_ptr = back_ptr = NULL;
