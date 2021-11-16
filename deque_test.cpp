@@ -20,7 +20,7 @@ int main(int argc, const char * argv[]) {
     coen79_lab8::deque<int> myDeque1;
     std::cout << "Done!\n\n";
     
-    
+/*   
     // ------------- Test: push_back() and back() -------------
     std::cout << "Test number: " << ++test_number << "\n";
     std::cout << "Testing push_back() and back()...!\n";
@@ -141,6 +141,6 @@ int main(int argc, const char * argv[]) {
     
     
     
-    
+ */   
     return 0;
 }
