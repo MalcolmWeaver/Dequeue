@@ -136,6 +136,7 @@ namespace coen79_lab8
         void operator=(const deque& source);
         void clear();
         void reserve();
+        void print();
         void push_front(const value_type& entry);
         void push_back(const value_type& entry);
         void pop_back();
@@ -314,6 +315,28 @@ namespace coen79_lab8
     }
     
     
+    template <class Item>
+    void deque<Item>::print()
+    {
+        std::cout << "PRINTING DEQUE\n";
+        value_type * current;
+        if(first_bp == NULL){
+            assert(last_bp == NULL);
+            return;
+        }
+        for(current = front_ptr; current < *first_bp + block_size; ++current){
+            std::cout << *current << "  ";
+        }
+        for(value_type** cursor = first_bp+1; cursor < last_bp; ++cursor){ 
+            for(current=*cursor; current < *cursor + block_size; ++current){
+                std::cout << *current << "  ";
+            }
+        }
+        for(current = *last_bp; current <= back_ptr; ++current){
+            std::cout << *current << "  ";
+        }
+        std::cout << std::endl;
+    }
     
     template <class Item>
     void deque<Item>::reserve()
@@ -408,7 +431,7 @@ namespace coen79_lab8
             *front_ptr = entry; 
         }
     }
-/*    
+    
     
     template <class Item>
     void deque<Item>::push_back(const value_type& entry)
@@ -422,6 +445,9 @@ namespace coen79_lab8
             last_bp = first_bp = block_pointers + bp_mid  - 1;
 
             // STUDENT WORK...
+            *first_bp = new value_type[block_size];
+            front_ptr = back_ptr = *first_bp + block_size/2;
+            *front_ptr = entry;
 
         }
         
@@ -430,6 +456,8 @@ namespace coen79_lab8
         else if (back_ptr != ((*last_bp) + (block_size - 1)))
         {
             // STUDENT WORK...
+            ++back_ptr;
+            *back_ptr = entry;
 
         }
         
@@ -439,6 +467,10 @@ namespace coen79_lab8
         else if ((back_ptr == ((*last_bp) + (block_size - 1))) && (last_bp != block_pointers_end))
         {
             // STUDENT WORK...
+            ++last_bp;
+            *last_bp = new value_type[block_size];
+            back_ptr = *last_bp;
+            *back_ptr = entry; 
 
         }
         
@@ -447,11 +479,16 @@ namespace coen79_lab8
         else if ((back_ptr == ((*last_bp) + (block_size - 1))) && (last_bp == block_pointers_end))
         {
             // STUDENT WORK...
+            reserve();
+            ++last_bp;
+            *last_bp = new value_type[block_size];
+            back_ptr = *last_bp;
+            *back_ptr = entry; 
 
         }
     }
     
-    
+/*    
     template <class Item>
     void deque<Item>::pop_front()
     {
@@ -497,7 +534,7 @@ namespace coen79_lab8
             --back_ptr;
         }
     }
-    
+    */
     template <class Item>
     bool deque<Item>::isEmpty()
     {
@@ -521,7 +558,7 @@ namespace coen79_lab8
         return *front_ptr;
     }
     
-    
+    /*
     // Constructs an itertor which points to the
     // first element of the deque
     template <class Item>
