@@ -100,7 +100,7 @@
 #include <math.h>
 #include <cassert>
 
-//#include "deque_iterator.h" // The iterator class for deque (refer to file deque_iterator.h)
+#include "deque_iterator.h" // The iterator class for deque (refer to file deque_iterator.h)
 
 
 namespace coen79_lab8
@@ -116,7 +116,7 @@ namespace coen79_lab8
         typedef std::size_t size_type;
         typedef Item value_type; // The type of items stored in the deque
         
-        //typedef deque_iterator<Item> iterator; // A typedef to simplify the use of iterator class
+        typedef deque_iterator<Item> iterator; // A typedef to simplify the use of iterator class
         
         // CONSTRUCTOR and DESTRUCTOR
         deque(size_type init_bp_array_size = BLOCKPOINTER_ARRAY_SIZE, size_type initi_block_size = BLOCK_SIZE);
@@ -129,8 +129,8 @@ namespace coen79_lab8
         value_type back();
         
         // ITERATOR MEMBER FUNCTIONS
-        //iterator begin();
-        //iterator end();
+        iterator begin();
+        iterator end();
         
         // MODIFICATION MEMBER FUNCTIONS
         void operator=(const deque& source);
@@ -567,7 +567,6 @@ namespace coen79_lab8
         return *front_ptr;
     }
     
-    /*
     // Constructs an itertor which points to the
     // first element of the deque
     template <class Item>
@@ -605,7 +604,6 @@ namespace coen79_lab8
                         bp_array_size, block_size,
                         tmp_cursor, tmp_current_boundary, tmp_current_block_pointer);
     }
-*/    
 }
 
 #endif /* deque_hpp */

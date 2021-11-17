@@ -69,7 +69,7 @@ namespace coen79_lab8
         bool operator ==(const deque_iterator other) const
         {
             // STUDENT WORK...
-            
+            return !((*this)!=other);
         }
         
         
@@ -94,13 +94,16 @@ namespace coen79_lab8
             if (cursor == current_boundary)
             {
                 // STUDENT WORK...
-
+                ++current_block_pointer;
+                cursor = *current_block_pointer;
+                current_boundary = *current_block_pointer + block_size - 1;
+                return *this;
             }
             // Move forward
             else
             {
                 // STUDENT WORK...
-
+                ++cursor;
             }
             
             return *this;
@@ -129,13 +132,15 @@ namespace coen79_lab8
             if (cursor == current_boundary)
             {
                 // STUDENT WORK...
-
+                ++current_block_pointer;
+                cursor = *current_block_pointer;
+                current_boundary = *current_block_pointer + block_size - 1;
             }
             // Move forward
             else
             {
                 // STUDENT WORK...
-
+                ++cursor;
             }
             
             return original;
