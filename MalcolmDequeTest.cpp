@@ -50,6 +50,27 @@ int main(int argc, const char * argv[]) {
     myDeque1.push_front(12);
     myDeque1.print();
 
+    myDeque1.pop_front();
+    myDeque1.pop_front();
+    myDeque1.pop_front();
+    myDeque1.pop_front();
+    myDeque1.pop_front();
+    myDeque1.pop_front();
+
+    myDeque1.print();
+
+    myDeque1.pop_back();
+    myDeque1.pop_back();
+    myDeque1.pop_back();
+    myDeque1.pop_back();
+    myDeque1.pop_back();
+    myDeque1.pop_back();
+    myDeque1.pop_back();
+    myDeque1.pop_back();
+    myDeque1.pop_back();
+    
+    myDeque1.print();
+
     deque<int> myDeque2(myDeque1);
     
     return 0;

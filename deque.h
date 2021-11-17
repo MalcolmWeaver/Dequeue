@@ -488,7 +488,7 @@ namespace coen79_lab8
         }
     }
     
-/*    
+    
     template <class Item>
     void deque<Item>::pop_front()
     {
@@ -498,19 +498,25 @@ namespace coen79_lab8
         if (back_ptr == front_ptr)
         {
             // STUDENT WORK...
-
+            clear();
         }
         // This is the last entry of the data block; move to the next block
         else if (front_ptr == ((*first_bp) + block_size - 1))
         {
             // STUDENT WORK...
-
+            // delete olf first_bp
+            delete [] *first_bp;
+            *first_bp = NULL; 
+            ++first_bp;
+            
+            
+            front_ptr = *first_bp;
         }
         // Simply move the pointer
         else
         {
             // STUDENT WORK...
-
+            ++front_ptr;
         }
     }
     
@@ -527,14 +533,17 @@ namespace coen79_lab8
         else if (back_ptr == *last_bp)
         {
             // STUDENT WORK...
-
+            delete [] *last_bp;
+            *last_bp = NULL; 
+            --last_bp;
+            back_ptr = *last_bp + block_size - 1;
         }
         else
         {
             --back_ptr;
         }
     }
-    */
+
     template <class Item>
     bool deque<Item>::isEmpty()
     {
